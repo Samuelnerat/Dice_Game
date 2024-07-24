@@ -34,29 +34,41 @@ const changePlayer = () => {
     Player2.classList.toggle('player--active');
 }
 
-
 Btn_Roll.addEventListener('click', function () {
-    Dice.classList.remove('hidden');
-    let diceRoll = Math.trunc(Math.random() * 6) + 1; 
-
-    let imageChange = () => {
-        if (diceRoll === 1) {
-        Dice.src = '/image/dice-1.png'; 
-    } else if (diceRoll === 2) {
-       Dice.src = '/image/dice-2.png';
-    } else if (diceRoll === 3) {
-        Dice.src = '/image/dice-3.png';
-    } else if ( diceRoll === 4) {
-        Dice.src = '/image/dice-4.png';
-    } else if (diceRoll === 5) {
-        Dice.src = '/image/dice-5.png';
-    } else {
-       Dice.src = '/image/dice-6.png';
-    }
-};
-
     if (playing) {
-        imageChange();
+        Dice.classList.remove('hidden');
+        let diceRoll = Math.trunc(Math.random() * 6) + 1;
+        
+        //     let imageChange = () => {
+        //         if (diceRoll === 1) {
+        //         Dice.src = '/image/dice-1.png'; 
+        //     } else if (diceRoll === 2) {
+        //        Dice.src = '/image/dice-2.png';
+        //     } else if (diceRoll === 3) {
+        //         Dice.src = '/image/dice-3.png';
+        //     } else if ( diceRoll === 4) {
+        //         Dice.src = '/image/dice-4.png';
+        //     } else if (diceRoll === 5) {
+        //         Dice.src = '/image/dice-5.png';
+        //     } else {
+        //        Dice.src = '/image/dice-6.png';
+        //     }
+        // };
+
+        //     if (playing) {
+        //         imageChange();
+        //         if (diceRoll === 1) {
+        //             changePlayer();
+        //         } else {
+        //             currentScore += diceRoll;
+        //             currentScores[currentPlayer].textContent = currentScore;
+        //         }
+        //     }
+        // })
+
+
+        Dice.src = `/image/dice-${diceRoll}.png`;
+
         if (diceRoll === 1) {
             changePlayer();
         } else {
@@ -66,16 +78,15 @@ Btn_Roll.addEventListener('click', function () {
     }
 })
 
-
 Btn_Hold.addEventListener('click', function () {
     if (playing) {
         totalScores[currentPlayer] += currentScore;
         Score[currentPlayer].textContent = totalScores[currentPlayer];
 
         if (totalScores[currentPlayer] >= score) {
-                playing = false;
-                Dice.classList.add('hidden');
-                // Btn_Hold.classList.add('hidden');
+            playing = false;
+            Dice.classList.add('hidden');
+            // Btn_Hold.classList.add('hidden');
             Players[currentPlayer].classList.add('player--winner');
             Players[currentPlayer].classList.remove('player--active');
 
@@ -87,7 +98,6 @@ Btn_Hold.addEventListener('click', function () {
 })
 
 const resetGame = () => {
-
     totalScores = [0, 0];
     currentScore = 0;
     playing = true;
