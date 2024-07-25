@@ -67,7 +67,7 @@ Btn_Roll.addEventListener('click', function () {
         // })
 
 
-        Dice.src = `image/dice-${diceRoll}.png`;
+        Dice.src = `./image/dice-${diceRoll}.png`;
 
         if (diceRoll === 1) {
             changePlayer();
